@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action="${'/employee/add'}" method="post" th:object="${employee}">
+  <label style="color:#FFFFFF">ФИО</label>
+  <input type="text" th:field="*{surname}" name="names">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+  <label style="color:#FFFFFF">Дата рождения</label>
+    <input type="date" th:field="*{dr}" name="dr" maxlength="8">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('dr')}" th:errors="*{dr}"></div><br>
+  <label style="color:#FFFFFF">Пол (true - женщина, false - мужчина)</label>
+    <input type="checkbox" th:field="*{gender}" name="gender">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div><br>
+  <label style="color:#FFFFFF">Количество детей</label>
+  <input type="number" th:field="*{children}" name="children">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('children')}" th:errors="*{children}"></div><br>
+  <br>
+  <label style="color:#FFFFFF">Должность</label>
+  <select  name="names">
+    <div th:each="element : ${posts}">
+      <option th:text="${element.names}"></option>
+    </div>
+  </select><br>
+  <label style="color:#FFFFFF">Аккаунт</label>
+  <select  name="username">
+    <div th:each="element : ${user}">
+      <option th:text="${element.username}"></option>
+    </div>
+  </select><br>
+  <label style="color:#FFFFFF">Филиал</label>
+  <select  name="adress">
+    <div th:each="element : ${shop}">
+      <option th:text="${element.adress}"></option>
+    </div>
+  </select><br>
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Добавить сотрудника</button>
+</form>
+</body>
+</html>

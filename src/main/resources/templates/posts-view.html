@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action = "@{/employee/{id}/editposts(id=${posts.id})}" method="post" th:object="${posts}">
+  <label style="color:#FFFFFF">Наименование</label>
+  <input type="text"  th:value="${posts.getNames()}" style="text-align: center;margin-bottom: 20px" name="names" size="25" maxlength="50" >
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('names')}" th:errors="*{names}"></div><br>
+
+  <label style="color:#FFFFFF">Заработная плата</label>
+  <input type="number" th:value="${posts.getSalary()}" style="text-align: center;margin-bottom: 20px"    name="salary" size="25" maxlength="20" >
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Сохранить изменения</button>
+</form>
+<div th:each="el : ${posts}">
+  <form th:action="'/employee/' + ${el.id} + '/removeposts'" method="post">
+    <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Удалить</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action="${'/categories/add'}" method="post">
+
+    <label style="color:#FFFFFF">Наименование</label>
+    <input type="text" name="names">
+
+
+    <label style="color:#FFFFFF">Категория</label>
+    <select  name="name">
+        <div th:each="element : ${categories}">
+            <option th:text="${element.name}"></option>
+        </div>
+    </select>
+    <br>
+      
+    </div>
+    <button type="submit">Добавить подкатегорию</button>
+</form>
+</body>
+</html>

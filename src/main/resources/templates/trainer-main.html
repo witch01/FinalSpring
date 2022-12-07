@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<h1 class="fst-italic" style="color:#FFFFFF" align="center">Тренера</h1>
+<table>
+    <tr>
+        <td>
+<!--            <form method="get" action="/product/filter">-->
+<!--                <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Поиск товара</button>-->
+<!--            </form>-->
+        </td>
+        <td></td>
+        <form method="get" action="/treni/add">
+            <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Добавить тренера</button>
+        </form>
+        </td>
+    </tr>
+</table>
+<table>
+    <div th:each="el : ${trainer}">
+        <tr>
+            <td><h3 style="color:#FFFFFF" th:text="${el.getNames()}" ></h3></td>
+            <td><a style="color: #FFFFFF"  th:href="'/treni/' + ${el.id} + '/edit'">Подробнее</a></td>
+        </tr>
+    </div>
+</table>
+</body>
+</html>

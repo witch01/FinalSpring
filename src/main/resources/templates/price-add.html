@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action="${'/price/add'}" method="post" th:object="${price}">
+  <label style="color:#FFFFFF">Наименование</label>
+  <input type="text" th:field="*{names}" name="names">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('names')}" th:errors="*{names}"></div><br>
+  <label style="color:#FFFFFF">Описание</label>
+  <input type="text" th:field="*{description}" name="description">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div><br>
+  <label style="color:#FFFFFF">Стоимость</label>
+  <input type="number" th:field="*{cent}" name="cent">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('cent')}" th:errors="*{cent}"></div><br>
+  <label style="color:#FFFFFF">Тренер</label>
+  <select  name="names">
+    <div th:each="element : ${trainer}">
+      <option th:text="${element.names}"></option>
+    </div>
+  </select>
+  <br>
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Добавить</button>
+</form>
+</body>
+</html>
